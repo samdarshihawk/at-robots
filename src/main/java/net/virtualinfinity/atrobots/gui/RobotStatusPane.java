@@ -60,7 +60,7 @@ public class RobotStatusPane extends JList implements SimulationObserver {
     }
 
     public Set<Integer> getSelectedRobotIds() {
-        final Object[] objects = this.getSelectedValues();
+        final List objects = this.getSelectedValuesList();
         final Set<Integer> selectedIds = new HashSet<Integer>();
         for (Object o : objects) {
             selectedIds.add(((RobotItem) o).getId());
