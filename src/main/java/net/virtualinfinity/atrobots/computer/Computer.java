@@ -400,6 +400,10 @@ public class Computer implements PortListener, Restartable {
         }
     }
 
+    public PortHandler createDefaultPortHandler() {
+        return null;
+    }
+
 	// public Computer() {
 	//     }
 
