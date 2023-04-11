@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author Daniel Pitts
  */
-public class Computer implements PortListener, Restartable {
+public class Computer extends PortHandler implements PortListener, Restartable {
     private Memory memory;
     private Registers registers;
     private StackMemory stack;
@@ -57,6 +57,8 @@ public class Computer implements PortListener, Restartable {
             this.jumpTable = jumpTable;
         }
     }
+
+    
 
     public HardwareBus getHardwareBus() {
         return hardwareBus;
@@ -231,9 +233,9 @@ public class Computer implements PortListener, Restartable {
         getHardwareBus().reset();
     }
 
-    // public PortHandler createDefaultPortHandler() {
-    //     return new Computer().setPortListener(Computer.this);
-    // }
+    public PortHandler createDefaultPortHandler() {
+        return new Computer().setPortListener(Computer.this);
+    }
 
     public MemoryRegion getCommQueueMemoryRegion() {
         return new MemoryRegion(memory, 512, 256);
@@ -400,11 +402,11 @@ public class Computer implements PortListener, Restartable {
         }
     }
 
-    public PortHandler createDefaultPortHandler() {
-        return null;
-    }
+  
 
-	// public Computer() {
-	//     }
+    public Computer() {
+        debugInfo = null;
+
+        }
 
 }
